@@ -1,0 +1,68 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class ValoresDeArreglo 
+{
+    public static void main(String[]args)
+    {
+        Scanner entrada = new Scanner(System.in);
+        boolean valido = false;
+        int numero = 0;
+        int opcion;
+        
+        System.out.println("Elija una opción\n1. Agregar\n2. Mostrar\n3. Salir");
+        opcion = entrada.nextInt();
+        
+        switch(opcion)
+        {
+            case 1:
+
+        while (!valido)
+        {
+            System.out.print("Por favor, ingrese un número entero: ");
+            try {
+                 numero = entrada.nextInt();
+                System.out.println("Tamaño del arreglo: " + numero);
+                valido = true; // Salir del bucle si la entrada es válida
+                
+                } catch (InputMismatchException e){
+                    System.out.println("Dato no válido");
+                entrada.next(); // Limpiar el buffer del scanner
+                
+                }
+        }
+            //almacena las posisiciomes
+            int[] arreglo = new int[numero];
+             valido = false; // Resetear el valor para el próximo uso
+            
+          
+           
+            for(int contador = 0; contador < arreglo.length; contador++) {
+            System.out.print("Ingrese el valor de la posición " + contador + ": ");
+            arreglo[contador] = entrada.nextInt();
+            }
+            
+            // Mostrar los valores almacenados en el arreglo
+        System.out.println("Valores almacenados en el arreglo:");
+        for (int contador = 0; contador < arreglo.length; contador++) {
+            System.out.println("Posición " + contador + ": " + arreglo[contador]);
+               
+        }
+            
+            
+              entrada.close(); // Cerrar el scanner al final
+            
+        
+        break;
+        
+        case 2: 
+            
+            
+                
+            
+        }
+     }
+    
+    
+ }
+       
