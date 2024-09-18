@@ -1,0 +1,85 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class pilasss {
+     static int[] arreglo;
+    public static void main(String[]args){
+        Scanner entrada = new Scanner(System.in);
+        boolean valido;
+        int numero = 0;
+        int opcion;
+
+        while (true) { // Bucle para permitir múltiples selecciones
+            System.out.println("Elija una opción\n1. Agregar\n2. Mostrar\n3. Salir\n4. Eliminar\n5. Llenar posición\n6. Insertar posición");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    valido = false; // Reiniciar la validez
+                    while (!valido) {
+                        System.out.print("Por favor, ingrese un número entero: ");
+                        try {
+                            numero = entrada.nextInt();
+                            System.out.println("Tamaño del arreglo: " + numero);
+                            arreglo = new int[numero]; // Inicializar el arreglo
+                            valido = true; // Salir del bucle si la entrada es válida
+                        } catch (InputMismatchException e) {
+                            System.out.println("Dato no válido");
+                            entrada.next(); // Limpiar el buffer del scanner
+                        }
+                    }
+
+                    // Llenar el arreglo con valores
+                    for (int contador = 0; contador < arreglo.length; contador++) {
+                        System.out.print("Ingrese el valor de la posición " + contador + ": ");
+                        arreglo[contador] = entrada.nextInt();
+                    }
+                    break;
+
+                case 2:
+                    // Mostrar los valores almacenados en el arreglo
+                    if (arreglo == null) {
+                        System.out.println("No hay valores almacenados en el arreglo.");
+                    } else {
+                        System.out.printf("%s%8s\n", "Indice", "Valor"); // Encabezados de columnas
+                        for (int contador = 0; contador < arreglo.length; contador++) {
+                            System.out.printf("%5d%8d\n", contador, arreglo[contador]);
+                        }
+                    }
+                    break;
+
+                case 3:
+                    entrada.close(); // cierra el scanner
+                    return; // termina main
+
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    
+                     break;
+                     
+                     
+                    
+                     case 4: // Opción para eliminar un valor
+                    if (arreglo == null) {
+                        System.out.println("No hay valores en el arreglo para eliminar.");
+                    } else {
+                        System.out.print("Ingrese el índice a eliminar (0 a " + (arreglo.length - 1) + "): ");
+                        int indice = entrada.nextInt();
+                        if (indice < 0 || indice >= arreglo.length) {//negativo o más un tamaño mas grande
+                            System.out.println("Índice no válido. Intente de nuevo.");
+                        } else {
+                            arreglo[indice] = ' '; // ya borramos y queda vacío, podemos poner cualquir valor
+                            System.out.println("Valor en posición " + indice + " eliminado.");
+                        }
+                    }
+                    break;
+                    
+                    
+                    
+
+                
+            }
+        }
+    }
+    
+}
