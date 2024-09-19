@@ -1,0 +1,47 @@
+package estructuradedatos;
+public class Random {
+    
+    static char arregloPila[] = new char[27];
+     static char letrasUsadas[] = new char[27];//guarda las letras ya usadas. hay 27 letras del abc
+     static int letrasContadas = 0; 
+   
+    public static void main(String[] args) {
+        
+        int contador = 0; //para ver cuantas letras hemos generado
+        
+        
+       //aleatorio
+         while (contador < 25) {
+             char letra = (char)(Math.random() * ('z' - 'a' ) + 'a');
+            //arregloPila[i] = (char)(Math.random()*('z'-'a')+'a');
+            
+            // para no repetir letra
+            boolean repetida = false;//marca si una letra ya existe 
+            for (int j = 0; j < letrasContadas; j++) {
+                if (letrasUsadas[j] == letra) {
+                    repetida = true; // la marca como repetida
+                    break;
+                }
+            }
+            
+             //agrega las no repetidas
+            if (!repetida) {
+                arregloPila[contador] = letra; // agregar la letra al arreglo
+                letrasUsadas[letrasContadas] = letra; // marca la letra como usada
+                letrasContadas++; 
+                contador++;//incrementa cuando hay una letra que no se generó antes 
+            }
+        }
+            
+          //  contador = arregloPila[i];
+            
+         //for (int i = 0; i < 27; i++) { 
+        for (int i = 0; i < contador; i++) {
+           
+        System.out.println("letra "+arregloPila[i]);
+            
+        }
+                
+     }
+    
+}
